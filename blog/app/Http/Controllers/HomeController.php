@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return view('home')->with('tasks', Task::all());
+    }
+    public function update(Request $request, $id)
+    {
+        $roleuser = Task::where('id','=',$id)->first();
+        $roleuser->status = $request->input('status');
+        $roleuser->save();
+
+        return redirect()->route('home.index');
+        //
     }
 }

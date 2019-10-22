@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/home', 'HomeController');
 
 Route::get('/admin',function (){
    return 'You are admin';
@@ -27,12 +27,27 @@ Route::get('/superadmin',function (){
     return 'You are super admin';
 })->middleware(['auth','auth.superadmin']);
 
-Route::get('/groupmanager',function (){
-    return 'You are group manager';
-})->middleware(['auth','auth.groupmanager']);
+Route::prefix('dp')->name('dp..')->group(function (){
+    Route::resource('/department','DepartmentController');
 
-
+});
 
 Route::namespace('Admin')->prefix('admin')->middleware(['auth','auth.admin'])->name('admin.')->group(function (){
-    Route::resource('/users','UserController',['except'=>['show','create','store']]);
+    Route::resource('/users','UserController');
+    Route::get('/user/{id}','UserController@assign')->name('users.assign');
+    Route::put('/user/{id}','UserController@assignupdate')->name('users.updates');
+    Route::resource('/department','DepartmentsController');
+
+});
+Route::namespace('GroupManager')->prefix('gm')->middleware(['auth','auth.groupmanager'])->name('gm.')->group(function (){
+    Route::resource('/users','UserController');
+
+});
+Route::namespace('SuperAdmin')->prefix('superadmin')->middleware(['auth','auth.superadmin'])->name('superadmin.')->group(function (){
+    Route::resource('/users','UserController');
+    Route::get('/user/{id}','UserController@assign')->name('users.assign');
+    Route::put('/user/{id}','UserController@assignupdate')->name('users.updates');
+
+    Route::resource('/department','DepartmentsController');
+
 });

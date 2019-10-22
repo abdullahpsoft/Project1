@@ -21,21 +21,21 @@
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                            <tr>
-                                <th>{{ $user->name }}</th>
-                                <th>{{ $user->email }}</th>
-                                <th>{{ implode(', ',$user->roles()->get()->pluck('name')->toArray()) }}</th>
-                                <th><a href="{{ route('admin.users.edit', $user->id) }}">
-                                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                                    </a>
-                                    @if(implode(', ',$user->roles()->get()->pluck('name')->toArray()) =='user')
-                                        <a href="{{ route('admin.users.assign', $user->id) }}">
+                                <tr>
+                                    <th>{{ $user->name }}</th>
+                                    <th>{{ $user->email }}</th>
+                                    <th>{{ implode(', ',$user->roles()->get()->pluck('name')->toArray()) }}</th>
+                                    <th><a href="{{ route('superadmin.users.edit', $user->id) }}">
+                                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                                        </a>
+                                        @if(implode(', ',$user->roles()->get()->pluck('name')->toArray()) =='user')
+                                        <a href="{{ route('superadmin.users.assign', $user->id) }}">
                                             <button type="button" class="btn btn-outline-success btn-sm">Assign</button>
                                         </a>
-                                    @endif
-                                </th>
+                                        @endif
+                                    </th>
 
-                            </tr>
+                                </tr>
                             @endforeach
 
                             </tbody>

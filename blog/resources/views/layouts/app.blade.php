@@ -33,10 +33,54 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
 
+                        @hasrole('superadmin' )
+                        <li class="nav-item">
+     <a class="nav-link" href="{{ route('superadmin.users.index') }}">Manage Users</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('superadmin' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('superadmin.users.create') }}">Create User</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('admin' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.users.create') }}">Create User</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('groupmanager' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('gm.users.create') }}">Create User</a>
+                        </li>
+                        @endhasrole
+
+                        @hasrole('superadmin' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('superadmin.department.index') }}">Manage Departments</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('admin' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.department.index') }}">Manage Departments</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('superadmin' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('superadmin.department.create') }}">Create Department</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('admin' )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.department.create') }}">Create Department</a>
+                        </li>
+                        @endhasrole
+                        @hasrole('admin' )
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.users.index') }}">Manage Users</a>
                         </li>
+                        @endhasrole
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

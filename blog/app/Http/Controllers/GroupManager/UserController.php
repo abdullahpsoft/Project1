@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\GroupManager;
 
 use App\Role;
-use App\RoleUser;
 use App\User;
+use App\RoleUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('users', User::all());
+        return view('gm.users.index')->with('users', User::all());
         //
     }
 
@@ -26,7 +26,7 @@ class UserController extends Controller
     public function create()
     {
 
-        return view('admin.users.create');
+        return view('gm.users.create');
 
     }
     public function show(Request $request)
@@ -43,7 +43,7 @@ class UserController extends Controller
 
         $user->save();
         //
-        return view('admin.users.index')->with('users', User::all());
+        return view('gm.users.create')->with('users', User::all());
     }
 
 
@@ -57,17 +57,17 @@ class UserController extends Controller
     public function edit($id)
     {
         if(Auth::user()->id == $id){
-            return redirect()->route('superadmin.users.index');
+            return redirect()->route('gm.users.index');
         }
 
-        return view('admin.users.edit')->with(['user'=> User::find($id),'roles' => Role::all()]);
+        return view('gm.users.edit')->with(['user'=> User::find($id),'roles' => Role::all()]);
         //
     }
 
     public function assign($id)
     {
 
-        return view('admin.users.assign')->with(['roleuser'=> RoleUser::all(),'user'=> User::find($id),'roles' => Role::all(),'users' => User::all()]);
+        return view('gm.users.assign')->with(['roleuser'=> RoleUser::all(),'user'=> User::find($id),'roles' => Role::all(),'users' => User::all()]);
 
         //
     }
@@ -76,7 +76,7 @@ class UserController extends Controller
         $roleuser = RoleUser::where('user_id','=',$id)->first();
         $roleuser->assign_to_id = $request->input('assign_to_id');
         $roleuser->save();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('gm.users.index');
         //
     }
 
@@ -91,11 +91,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         if(Auth::user()->id == $id){
-            return redirect()->route('admin.users.index');
+            return redirect()->route('gm.users.index');
         }
         $user = User::find($id);
         $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.index');
+        return redirect()->route('gm.users.index');
         //
     }
 
