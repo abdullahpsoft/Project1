@@ -63,6 +63,8 @@ class Kernel extends HttpKernel
         'auth.admin' => \App\Http\Middleware\AccessAdmin::class,
         'auth.superadmin' => \App\Http\Middleware\AccessSuperAdmin::class,
         'auth.groupmanager' => \App\Http\Middleware\AccessGroupManager::class,
+        'auth.department' => \App\Http\Middleware\AccessDepartment::class,
+
 
 
     ];

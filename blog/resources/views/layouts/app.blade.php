@@ -51,7 +51,7 @@
                         @endhasrole
                         @hasrole('groupmanager' )
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('gm.users.create') }}">Create User</a>
+                            <a class="nav-link" href="{{ route('gm.users.create') }}">Create Task</a>
                         </li>
                         @endhasrole
 
@@ -70,6 +70,8 @@
                             <a class="nav-link" href="{{ route('superadmin.department.create') }}">Create Department</a>
                         </li>
                         @endhasrole
+
+
                         @hasrole('admin' )
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.department.create') }}">Create Department</a>

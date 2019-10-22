@@ -5,19 +5,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Create User</div>
+                    <div class="card-header">Create Task</div>
 
                     <div class="card-body">
                         <form action="{{route('gm.users.store')}}" method="POST">
                             {{ csrf_field() }}
-                            <label for="name"> Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input name="name" id="name"  placeholder="User Name" type="text" value=""><br><br>
-                            <label for="name"> Email:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="name"> Title:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input name="title" id="title"  placeholder="Title" type="text" value=""><br><br>
 
-                            <input name="email" id="email" placeholder="User Email" type="text" value=""><br><br>
+                            <label for="name"> Details:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <label for="name"> Password:</label>
-                            <input name="password" id="password" placeholder="User Password" type="text" value=""><br><br>
+                            <input name="details" id="details" placeholder="Details" type="text" value=""><br><br>
+
+                            <label for="name"> Status:</label>
+                            <input name="status" id="status" placeholder="status" type="text" value=""><br><br>
+
+                            <label for="name"> Due Date:</label>
+                            <input name="date" id="date" placeholder="yyyy/mm/dd" type="text" value=""><br><br>
 
                             <button type="submit" class="btn btn-success">Create</button>
                         </form>

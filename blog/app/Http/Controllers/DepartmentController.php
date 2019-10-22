@@ -20,6 +20,7 @@ class DepartmentController extends Controller
     public function doLogin()
     {
 // process the form
+
     }
     /**
      * Show the form for creating a new resource.

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\GroupManager;
 use App\Role;
 use App\User;
 use App\RoleUser;
+use App\Task;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -36,14 +38,16 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user = new User();
-        $user->name  = $request->input('name');
-        $user->email  = $request->input('email');
-        $user->password  = $request->input('password');
+        $task = new Task();
+        $task->title  = $request->input('title');
+        $task->details  = $request->input('details');
+        $task->status  = $request->input('status');
+        $task->due_date  = $request->input('date');
 
-        $user->save();
+
+        $task->save();
         //
-        return view('gm.users.create')->with('users', User::all());
+        return view('gm.users.create')->with('users', Task::all());
     }
 
 
